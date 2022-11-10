@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Posdea.Infrastructure\Posdea.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
