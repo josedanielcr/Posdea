@@ -27,4 +27,8 @@
     <ProjectReference Include="..\Posdea.Application\Posdea.Application.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\Migrations\" />
+  </ItemGroup>
+
 </Project>

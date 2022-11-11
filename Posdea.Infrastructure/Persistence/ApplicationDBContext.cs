@@ -17,11 +17,5 @@ namespace Posdea.Infrastructure.Persistence
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options){ }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-            base.OnModelCreating(builder);
-        }
-
     }
 }
