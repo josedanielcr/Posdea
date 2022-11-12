@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Posdea.Domain.Entities;
+using Posdea.Domain.Entities.UserSegment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +11,7 @@ namespace Posdea.Application.Common.Interfaces
     public interface IApplicationDbContext
     {
         DbSet<User> Users { get; }
+        DbSet<Address> Address { get; }
+        DbSet<Role> Roles { get; }
     }
 }

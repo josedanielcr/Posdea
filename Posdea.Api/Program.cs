@@ -1,13 +1,16 @@
-using Posdea.Application;
-using Posdea.Infrastructure;
+using Microsoft.Extensions.Configuration;
+using Posdea.Infrastructure.Configurations;
 using Posdea.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddApplicationServices();
-builder.Services.AddInfrastructureServices(builder.Configuration);
+//application options
+builder.Services.AddApplicationOptions(builder.Configuration);
 
+//application services                                                                                                                                        
+builder.Services.AddProjectsConfig(builder.Configuration);
 builder.Services.AddControllers();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
