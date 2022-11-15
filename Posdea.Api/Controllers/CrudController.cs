@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Posdea.Application.Common.Interfaces;
+using Posdea.Application.Common.Interfaces.Services;
+using System.Runtime.InteropServices;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,7 +30,6 @@ namespace Posdea.Api.Controllers
             }
         }
 
-        // GET api/<CrudController>/5
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -39,29 +39,47 @@ namespace Posdea.Api.Controllers
             }
             catch (Exception)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, e);
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
-        // POST api/<CrudController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] T model)
         {
-
+            try
+            {
+                return Ok(await crudService.Insert(model));
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
-        // PUT api/<CrudController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put(int id, [FromBody] T model)
         {
-
+            try
+            {
+                return Ok(await crudService.Update(id,model));
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
 
-        // DELETE api/<CrudController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-
+            try
+            {
+                return Ok(await crudService.DeleteById(id));
+            }
+            catch (Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError);
+            }
         }
     }
 }

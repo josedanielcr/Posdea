@@ -1,18 +1,20 @@
 ﻿using Posdea.Application.Common.Interfaces;
-using Posdea.Domain.Entities.UserSegment;
+using Posdea.Application.Common.Interfaces.Services;
+using Posdea.Application.Common.Interfaces.Services.Entities;
+using Posdea.Application.Models.UserSegment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Posdea.Application.Services
+namespace Posdea.Application.Services.Entities
 {
-    public class UserService : ICrudService<User>
+    public class AddressService : ICrudService<AddressModel>, IAddressService
     {
         private readonly IApplicationDbContext dbContext;
 
-        public UserService(IApplicationDbContext dbContext)
+        public AddressService(IApplicationDbContext dbContext)
         {
             this.dbContext = dbContext;
         }
@@ -22,22 +24,22 @@ namespace Posdea.Application.Services
             throw new NotImplementedException();
         }
 
-        public Task<IEnumerable<User>> GetAll()
+        public Task<IEnumerable<AddressModel>> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public Task<User> GetById(int id)
+        public Task<AddressModel> GetById(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<User> Insert(User entity)
+        public Task<AddressModel> Insert(AddressModel entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<User> Update(int id, User newEntity)
+        public Task<AddressModel> Update(int id, AddressModel newEntity)
         {
             throw new NotImplementedException();
         }

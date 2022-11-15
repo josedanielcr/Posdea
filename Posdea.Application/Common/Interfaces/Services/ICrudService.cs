@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Posdea.Application.Common.Interfaces
+namespace Posdea.Application.Common.Interfaces.Services
 {
     public interface ICrudService<T>
     {
