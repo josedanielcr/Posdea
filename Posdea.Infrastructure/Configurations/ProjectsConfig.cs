@@ -13,7 +13,7 @@ namespace Posdea.Infrastructure.Configurations
     {
         public static IServiceCollection AddProjectsConfig(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddApplicationServices();
+            services.AddApplicationServices(configuration);
             services.AddInfrastructureServices(configuration);
             return services;
         }

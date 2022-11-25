@@ -12,8 +12,8 @@ using Posdea.Infrastructure.Persistence;
 namespace Posdea.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20221115004042_userStructure")]
-    partial class userStructure
+    [Migration("20221120195106_initial")]
+    partial class initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -82,9 +82,8 @@ namespace Posdea.Infrastructure.Persistence.Migrations
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Name")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -158,7 +157,7 @@ namespace Posdea.Infrastructure.Persistence.Migrations
                         .IsRequired();
 
                     b.HasOne("Posdea.Domain.Entities.UserSegment.Role", "Role")
-                        .WithMany("users")
+                        .WithMany()
                         .HasForeignKey("RoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -166,11 +165,6 @@ namespace Posdea.Infrastructure.Persistence.Migrations
                     b.Navigation("Address");
 
                     b.Navigation("Role");
-                });
-
-            modelBuilder.Entity("Posdea.Domain.Entities.UserSegment.Role", b =>
-                {
-                    b.Navigation("users");
                 });
 #pragma warning restore 612, 618
         }

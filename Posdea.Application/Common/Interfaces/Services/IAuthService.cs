@@ -1,4 +1,5 @@
-﻿using Posdea.Application.Models.UserSegment;
+﻿using Posdea.Application.Models.Auth;
+using Posdea.Application.Models.UserSegment;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Posdea.Application.Common.Interfaces.Services
     public interface IAuthService
     {
         Task<UserModel> SignUp(UserModel user);
+        Task<object> Login(UserRegisterModel user);
     }
 }

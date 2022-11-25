@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Posdea.Application.Common.Interfaces.Services;
+using Posdea.Application.Models.Auth;
 using Posdea.Application.Models.UserSegment;
 
 namespace Posdea.Api.Controllers
@@ -19,14 +20,13 @@ namespace Posdea.Api.Controllers
         [HttpPost("signUp")]
         public async Task<IActionResult> SignUp([FromBody] UserModel user)
         {
-            try
-            {
-                return Ok(await authService.SignUp(user));
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            return Ok(await authService.SignUp(user));
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] UserRegisterModel user)
+        {
+            return Ok(await authService.Login(user));
         }
     }
 }

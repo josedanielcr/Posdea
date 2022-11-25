@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using Posdea.Application.Common.Interfaces;
 using Posdea.Application.Common.Interfaces.Services;
 using Posdea.Application.Common.Interfaces.Services.Entities;
@@ -38,7 +39,6 @@ namespace Posdea.Application.Services.Entities
             var role = await dbContext.Roles.FindAsync(id);
             return mapper.Map<RoleModel>(role);
         }
-
         public async Task<RoleModel> Insert(RoleModel entity)
         {
             var role = mapper.Map<Role>(entity); 

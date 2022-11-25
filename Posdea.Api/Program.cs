@@ -4,9 +4,6 @@ using Posdea.Infrastructure.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//application options
-builder.Services.AddApplicationOptions(builder.Configuration);
-
 //application services                                                                                                                                        
 builder.Services.AddProjectsConfig(builder.Configuration);
 builder.Services.AddControllers();
@@ -27,9 +24,11 @@ using (var scope = app.Services.CreateScope())
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
+
+app.UseExceptionHandler("/error");
 
 app.UseHttpsRedirection();
 

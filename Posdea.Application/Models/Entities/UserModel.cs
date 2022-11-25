@@ -21,11 +21,12 @@ namespace Posdea.Application.Models.UserSegment
         public string PhoneNumber { get; set; }
         [Required]
         public string Password { get; set; }
-        public string Status { get; set; }
+        public string? Status { get; set; }
         [Required]
         public AddressModel Address { get; set; }
         public int? AddressId { get; set; }
         public RoleModel? Role { get; set; }
+        [Required]
         public int RoleId { get; set; }
     }
 }

@@ -12,24 +12,25 @@ using System.Reflection;
 using Posdea.Application.Models.UserSegment;
 using Posdea.Application.Common.Interfaces.Services.Entities;
 using Posdea.Application.Common.Interfaces.Services;
+using Posdea.Application.Options;
+using Microsoft.Extensions.Configuration;
+using Posdea.Application.Services;
+using Posdea.Application.Helpers;
 
 namespace Posdea.Application
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration)
         {
+            //options
+            services.Configure<TokenConfiguration>(configuration.GetSection("keys"));
             //autoMapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            //auth
-            services.AddScoped<IAuthService,AuthService>();
-            //entities
-            services.AddScoped<ICrudService<UserModel>, UserService>();
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ICrudService<AddressModel>, AddressService>();
-            services.AddScoped<IAddressService, AddressService>();
-            services.AddScoped<ICrudService<RoleModel>, RoleService>();
-            services.AddScoped<IRoleService, RoleService>();
+            //helpers
+            services.AddHelpersConfiguration();
+            //services
+            services.AddServicesConfiguration();
             return services;
         }
     }
