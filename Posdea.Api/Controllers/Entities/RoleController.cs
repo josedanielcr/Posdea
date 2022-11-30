@@ -9,8 +9,6 @@ namespace Posdea.Api.Controllers.Entities
     [ApiController]
     public class RoleController : CrudController<RoleModel>
     {
-        public RoleController(ICrudService<RoleModel> crudService): base(crudService)
-        {
-        }
+        public RoleController(ICrudService<RoleModel> crudService): base(crudService){}
     }
 }

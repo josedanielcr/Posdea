@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Posdea.Application.Common.Exceptions;
 using Posdea.Application.Common.Interfaces;
 using Posdea.Application.Common.Interfaces.Services;
 using Posdea.Application.Common.Interfaces.Services.Entities;
@@ -26,25 +27,79 @@ namespace Posdea.Application.Services.Entities
 
         public async Task<int> DeleteById(int id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var role = await dbContext.Roles.Where(r => r.Id == id).FirstOrDefaultAsync();
+                if(role == null)
+                {
+                    throw new NotFoundException($"The rol with the id {id} was not found");
+                }
+                dbContext.Roles.Remove(role);
+                await dbContext.SaveChangesAsync();
+                return id;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<IEnumerable<RoleModel>> GetAll()
         {
-            throw new NotImplementedException();
+            try
+            {
+                var roles = await dbContext.Roles.ToListAsync();
+
+                if(roles.Count == 0)
+                {
+                    throw new NotFoundException("There are no roles registered");
+                }
+
+                List<RoleModel> modelRolesList = new List<RoleModel>();
+
+                foreach (Role role in roles)
+                {
+                    modelRolesList.Add(mapper.Map<RoleModel>(role));
+                }
+
+                return modelRolesList;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public async Task<RoleModel> GetById(int id)
         {
-            var role = await dbContext.Roles.FindAsync(id);
-            return mapper.Map<RoleModel>(role);
+            try
+            {
+                var role = await dbContext.Roles.Where(r => r.Id == id).FirstOrDefaultAsync();
+                if(role == null)
+                {
+                    throw new NotFoundException($"The rol with the id {id} was not found");
+                }
+                return mapper.Map<RoleModel>(role);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
         public async Task<RoleModel> Insert(RoleModel entity)
         {
-            var role = mapper.Map<Role>(entity); 
-            var dbRole = dbContext.Roles.Add(role);
-            await dbContext.SaveChangesAsync();
-            return entity;
+            try
+            {
+                var role = mapper.Map<Role>(entity);
+                dbContext.Roles.Add(role);
+                await dbContext.SaveChangesAsync();
+                return entity;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+           
         }
 
         public async Task<RoleModel> Update(int id, RoleModel newEntity)
