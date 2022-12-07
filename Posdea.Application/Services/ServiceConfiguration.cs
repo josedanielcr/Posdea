@@ -21,13 +21,13 @@ namespace Posdea.Application.Services
         {
             //auth
             services.AddScoped<IAuthService, AuthService>();
+            //parameters
+            services.AddScoped<IParameterService<RoleModel>, RoleService>();
             //entities
-            services.AddScoped<ICrudService<UserModel>, UserService>();
             services.AddScoped<IUserService, UserService>();
-            services.AddScoped<ICrudService<AddressModel>, AddressService>();
             services.AddScoped<IAddressService, AddressService>();
-            services.AddScoped<ICrudService<RoleModel>, RoleService>();
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IMenuOptionService, MenuOptionService>();
             return services;
         }
     }

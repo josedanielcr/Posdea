@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Posdea.Application.Common.Interfaces.Services
 {
-    public interface ICrudService<T>
+    public interface IParameterService<T>
     {
         Task<IEnumerable<T>> GetAll();
         Task<T> GetById(int id);

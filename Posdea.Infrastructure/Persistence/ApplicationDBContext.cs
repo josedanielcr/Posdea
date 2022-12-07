@@ -16,6 +16,7 @@ namespace Posdea.Infrastructure.Persistence
         public DbSet<User> Users { get; set; }
         public DbSet<Address> Address { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<MenuOption> MenuOptions { get; set; }
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options){ }
 

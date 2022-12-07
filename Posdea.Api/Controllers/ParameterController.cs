@@ -10,40 +10,40 @@ namespace Posdea.Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class CrudController<T> : ControllerBase where T : class
+    public class ParameterController<T> : ControllerBase where T : class
     {
-        private readonly ICrudService<T> crudService;
-        public CrudController(ICrudService<T> crudService)
+        private readonly IParameterService<T> crudService;
+        public ParameterController(IParameterService<T> crudService)
         {
             this.crudService = crudService;
         }
 
-        [HttpGet]
+        [HttpGet, Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetAll()
         {
             IEnumerable<T> Results = await crudService.GetAll();
             return Ok(Results);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> GetById(int id)
         {
             return Ok(await crudService.GetById(id));
         }
 
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Post([FromBody] T model)
         {
             return Ok(await crudService.Insert(model));
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Put(int id, [FromBody] T model)
         {
             return Ok(await crudService.Update(id,model));
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize(Roles = "Administrator")]
         public async Task<IActionResult> Delete(int id)
         {
             return Ok(await crudService.DeleteById(id));

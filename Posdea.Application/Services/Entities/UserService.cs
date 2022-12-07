@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Posdea.Application.Services.Entities
 {
-    public class UserService : ICrudService<UserModel>, IUserService
+    public class UserService : IUserService
     {
         private readonly IApplicationDbContext dbContext;
 
@@ -19,27 +19,7 @@ namespace Posdea.Application.Services.Entities
             this.dbContext = dbContext;
         }
 
-        public Task<int> DeleteById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<UserModel>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<UserModel> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<UserModel> Insert(UserModel entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<UserModel> Update(int id, UserModel newEntity)
         {
             throw new NotImplementedException();
         }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Posdea.Application.Mappings;
+using Posdea.Application.Models.Entities;
 using Posdea.Domain.Entities.UserSegment;
 using Posdea.Domain.Enums;
 using System;
@@ -16,5 +17,6 @@ namespace Posdea.Application.Models.UserSegment
         public int Id { get; set; }
         [Required]
         public string Name { get; set; }
+        public IEnumerable<MenuOptionModel>? MenuOptions { get; set; }
     }
 }

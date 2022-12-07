@@ -13,6 +13,8 @@ namespace Posdea.Application.Common.Interfaces
         DbSet<User> Users { get; }
         DbSet<Address> Address { get; }
         DbSet<Role> Roles { get; }
+
+        DbSet<MenuOption> MenuOptions { get; }
         Task<int> SaveChangesAsync();
     }
 }

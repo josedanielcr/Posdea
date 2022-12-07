@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Posdea.Application.Services.Entities
 {
-    public class RoleService : ICrudService<RoleModel>, IRoleService
+    public class RoleService : IParameterService<RoleModel>, IRoleService
     {
         private readonly IApplicationDbContext dbContext;
         private readonly IMapper mapper;
