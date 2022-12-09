@@ -29,5 +29,11 @@ namespace Posdea.Api.Controllers.Entities
         {
             return Ok(await menuOptionService.GetAll(roleId));
         }
+
+        [HttpPut("role/{roleId}"), Authorize(Roles = "Administrator")]
+        public async Task<IActionResult> Update([FromBody] MenuOptionModel menuOption, int roleId)
+        {
+            return Ok(await menuOptionService.Update(menuOption,roleId));
+        }
     }
 }

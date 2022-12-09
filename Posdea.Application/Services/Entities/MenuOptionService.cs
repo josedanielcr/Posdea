@@ -34,11 +34,18 @@ namespace Posdea.Application.Services.Entities
             try
             {
                 var menuOptionDb = await dbContext.MenuOptions
-                    .Where(m => m.Id == menuOption.Id).FirstOrDefaultAsync();
+                    .Where(m => m.Id == menuOption.Id)
+                    .Where(m => m.Status == EntityStatus.Active)
+                    .FirstOrDefaultAsync();
 
-                if (menuOption == null)
+                if (menuOptionDb == null)
                 {
                     throw new NotFoundException("Menu option not found");
+                }
+
+                if(menuOption == null)
+                {
+                    throw new ValidationException("The new option is null");
                 }
 
                 var menuOptionDbModel = mapper.Map<MenuOption>(menuOption);
@@ -58,7 +65,9 @@ namespace Posdea.Application.Services.Entities
             try
             {
                 var menuOptions = await dbContext.MenuOptions
-                    .Where(m => m.RoleId == RoleId).ToListAsync();
+                    .Where(m => m.RoleId == RoleId)
+                    .Where(m => m.Status == EntityStatus.Active)
+                    .ToListAsync();
 
                 if (menuOptions.Count == 0)
                 {
