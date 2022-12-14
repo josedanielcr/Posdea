@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Posdea.Application.Services.Entities
 {
-    public class AddressService : ICrudService<AddressModel>, IAddressService
+    public class AddressService : IAddressService
     {
         private readonly IApplicationDbContext dbContext;
 
@@ -19,27 +19,7 @@ namespace Posdea.Application.Services.Entities
             this.dbContext = dbContext;
         }
 
-        public Task<int> DeleteById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<AddressModel>> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
         public Task<AddressModel> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<AddressModel> Insert(AddressModel entity)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<AddressModel> Update(int id, AddressModel newEntity)
         {
             throw new NotImplementedException();
         }

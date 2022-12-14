@@ -13,5 +13,6 @@ namespace Posdea.Domain.Entities.UserSegment
     {
         [Required]
         public UserRoles Name { get; set; }
+        public IEnumerable<MenuOption>? MenuOptions { get; set; }
     }
 }

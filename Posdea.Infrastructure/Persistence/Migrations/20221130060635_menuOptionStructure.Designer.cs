@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Posdea.Infrastructure.Persistence;
 
@@ -11,9 +12,11 @@ using Posdea.Infrastructure.Persistence;
 namespace Posdea.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20221130060635_menuOptionStructure")]
+    partial class menuOptionStructure
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,15 +90,12 @@ namespace Posdea.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int?>("RoleId")
                         .HasColumnType("int");
 
                     b.Property<string>("Route")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -192,13 +192,9 @@ namespace Posdea.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("Posdea.Domain.Entities.UserSegment.MenuOption", b =>
                 {
-                    b.HasOne("Posdea.Domain.Entities.UserSegment.Role", "Role")
+                    b.HasOne("Posdea.Domain.Entities.UserSegment.Role", null)
                         .WithMany("MenuOptions")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
+                        .HasForeignKey("RoleId");
                 });
 
             modelBuilder.Entity("Posdea.Domain.Entities.UserSegment.User", b =>

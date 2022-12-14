@@ -7,8 +7,8 @@ namespace Posdea.Api.Controllers.Entities
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class RoleController : CrudController<RoleModel>
+    public class RoleController : ParameterController<RoleModel>
     {
-        public RoleController(ICrudService<RoleModel> crudService): base(crudService){}
+        public RoleController(IParameterService<RoleModel> crudService): base(crudService){}
     }
 }
