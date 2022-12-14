@@ -1,4 +1,5 @@
 ﻿using Posdea.Domain.Common;
+using Posdea.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,6 +12,6 @@ namespace Posdea.Domain.Entities.UserSegment
     public class Role : BaseAuditableEntity
     {
         [Required]
-        public string Name { get; set; }
+        public UserRoles Name { get; set; }
     }
 }

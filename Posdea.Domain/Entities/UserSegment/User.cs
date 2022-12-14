@@ -18,7 +18,9 @@ namespace Posdea.Domain.Entities.UserSegment
         [Required]
         public string PhoneNumber { get; set; }
         [Required]
-        public string Password { get; set; }
+        public byte[] PasswordHash { get; set; }
+        [Required]
+        public byte[] PasswordSalt { get; set; }
         [Required]
         public UserStatus Status { get; set; }
         [Required]

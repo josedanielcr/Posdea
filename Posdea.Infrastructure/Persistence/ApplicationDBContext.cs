@@ -19,5 +19,9 @@ namespace Posdea.Infrastructure.Persistence
 
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options){ }
 
+        public async Task<int> SaveChangesAsync()
+        {
+            return await base.SaveChangesAsync();
+        }
     }
 }
