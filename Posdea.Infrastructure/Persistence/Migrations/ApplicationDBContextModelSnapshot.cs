@@ -30,9 +30,6 @@ namespace Posdea.Infrastructure.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("City")
-                        .HasColumnType("int");
-
                     b.Property<int>("Country")
                         .HasColumnType("int");
 
@@ -47,12 +44,6 @@ namespace Posdea.Infrastructure.Persistence.Migrations
 
                     b.Property<string>("LastModifiedBy")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("PostalCode")
-                        .HasColumnType("int");
-
-                    b.Property<int>("State")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

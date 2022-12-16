@@ -26,7 +26,7 @@ namespace Posdea.Api.Controllers
         public IActionResult Error()
         {
             var context = HttpContext.Features.Get<IExceptionHandlerFeature>();
-            var exception = context?.Error;
+            var exception = context?.Error;;
             return Problem(title: exception?.Message, statusCode: errorHelper.GetExceptionStatusCode(exception));
         }
     }

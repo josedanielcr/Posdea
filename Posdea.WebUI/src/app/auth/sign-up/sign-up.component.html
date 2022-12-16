@@ -1,0 +1,62 @@
+<div class="row bone-white-background h-100 d-flex flex-column justify-content-center align-items-center">
+  
+  <img src="../../../assets/images/logo.png" class="logo-img mb-4">
+  <div class="sign-up-box"
+      [class.sign-up-box-loading]="this.isLoading">
+    <div class="container text-center d-flex flex-column justify-content-center align-items-center h-100">
+      <div class="row">
+        <h3>Sign up with your email</h3>
+        <p>Already have an account? <a [routerLink]="['/login']">login</a></p>
+      </div>
+      <div class="row w-100">
+        <form autocomplete="off" [formGroup]="this.signUpForm">
+          <div class="mb-1">
+            <component-input formControlName="name"
+                             [inputFormControl]="this.signUpForm!.get('name')!" 
+                             errorMessage="you must a name"
+                             label="Name" 
+                             [size]="100"
+                             type="text"
+                             icon="person">
+            </component-input>
+          </div>
+          <div class="mb-1">
+            <component-input formControlName="email" 
+                             [inputFormControl]="this.signUpForm!.get('email')!"
+                             errorMessage="you must provide a valid email"
+                             label="Email" 
+                             [size]="100"
+                             type="email"
+                             icon="email">
+            </component-input>
+          </div>
+          <div class="mb-1">
+            <component-input formControlName="phoneNumber" 
+                             [inputFormControl]="this.signUpForm!.get('phoneNumber')!" 
+                             label="Phone number" 
+                             errorMessage="you must provide a phoneNumber"
+                             [size]="100"
+                             type="string"
+                             icon="phone">
+            </component-input>
+          </div>
+          <div class="mb-1">
+            <component-input formControlName="password" 
+                             [inputFormControl]="this.signUpForm!.get('password')!" 
+                             errorMessage="You must provide a valid password"
+                             hint="the password must contain at least 10 character with one uppercase, lowercase, number and special character"
+                             [size]="100"
+                             [isPassword]="true">
+            </component-input>
+          </div>
+          <div class="mb-1">
+            <component-select label="Country" [selectData]="this.selectData" formControlName="country"></component-select>
+          </div>
+          <div class="mt-4">
+            <component-button label="Signup" type="primary" (click)="this.submitSignUp()"></component-button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

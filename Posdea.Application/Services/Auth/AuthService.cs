@@ -23,13 +23,16 @@ namespace Posdea.Application.Services.Auth
         private readonly IMapper mapper;
         private readonly IPasswordHelper passwordHelper;
         private readonly ITokenHelper tokenHelper;
+        private readonly IRoleService roleService;
 
-        public AuthService(IApplicationDbContext dbContext, IMapper mapper, IPasswordHelper passwordHelper, ITokenHelper tokenHelper)
+        public AuthService(IApplicationDbContext dbContext, IMapper mapper, IPasswordHelper passwordHelper, ITokenHelper tokenHelper,
+            IRoleService roleService)
         {
             this.dbContext = dbContext;
             this.mapper = mapper;
             this.passwordHelper = passwordHelper;
             this.tokenHelper = tokenHelper;
+            this.roleService = roleService;
         }
 
         public async Task<object> Login(UserRegisterModel user)
@@ -80,10 +83,17 @@ namespace Posdea.Application.Services.Auth
                 var userMap = mapper.Map<User>(user);
                 userMap.PasswordSalt = passwordHelper.GetPasswordSalt();
                 userMap.PasswordHash = passwordHelper.GetPasswordHash(user.Password);
-                userMap.RoleId = user.RoleId;
+
+                var roleModel = await roleService.GetByRoleName(Domain.Enums.UserRoles.User);
+                userMap.RoleId = roleModel.Id;
+
                 userMap.Status = Domain.Enums.UserStatus.active;
+
+                userMap.Created = new DateTime();
+
                 dbContext.Users.Add(userMap);
                 await dbContext.SaveChangesAsync();
+
                 return mapper.Map<UserModel>(userMap);
             }
             catch (Exception)

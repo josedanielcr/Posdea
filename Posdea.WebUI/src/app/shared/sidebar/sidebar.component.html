@@ -1,0 +1,11 @@
+<mat-sidenav-container class="example-container">
+
+  <mat-sidenav mode="side" [opened]="this.isOpen" class="sidebar-width">
+    <!-- options -->
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <button (click)="this.change()">hola haga click</button>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: 'Open Sans', sans-serif;}
+
+/* backgrounds */
+.purple-primary-background {
+  background-color: #490B3D;
+}
+
+.red-secondary-background {
+  background-color: #BD1E51;
+}
+
+.yellow-ternary-background {
+  background-color: #F1B814;
+}
+
+.bone-white-background {
+  background-color: #F9F6EE;
+}
+
+/* colors */
+.purple-primary-color {
+  color: #490B3D;
+}
+
+.red-secondary-color {
+  color: #BD1E51;
+}
+
+.yellow-ternary-color {
+  color: #F1B814;
+}
+
+a {
+  color: #F1B814;
+}
+
+a:hover {
+  opacity: .5;
+  color: #F1B814;
+}
+
+.dropdown-panel {
+  margin-top: 2rem !important;
+}

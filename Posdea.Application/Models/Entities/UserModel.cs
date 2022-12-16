@@ -26,7 +26,6 @@ namespace Posdea.Application.Models.UserSegment
         public AddressModel Address { get; set; }
         public int? AddressId { get; set; }
         public RoleModel? Role { get; set; }
-        [Required]
-        public int RoleId { get; set; }
+        public int? RoleId { get; set; }
     }
 }
