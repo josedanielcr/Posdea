@@ -24,7 +24,7 @@ namespace Posdea.Api.Controllers.Entities
             this.menuOptionService = menuOptionService;
         }
 
-        [HttpGet("role/{roleId}"), Authorize(Roles = "Administrator")]
+        [HttpGet("role/{roleId}"), Authorize]
         public async Task<IActionResult> GetAllByRole(int roleId)
         {
             return Ok(await menuOptionService.GetAll(roleId));

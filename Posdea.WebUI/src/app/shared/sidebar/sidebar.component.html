@@ -1,11 +1,20 @@
 <mat-sidenav-container class="example-container">
 
-  <mat-sidenav mode="side" [opened]="this.isOpen" class="sidebar-width">
+  <mat-sidenav mode="side" [opened]="this.isOpen" [mode]="this.type" class="sidebar-width">
     <!-- options -->
+    <div class="container h-100">
+      <div class="row d-flex align-items-end h-100">
+        <div class="container d-flex" *ngIf="this.user">
+          <div>
+            {{user.name}}
+          </div>
+        </div>
+      </div>
+    </div>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <button (click)="this.change()">hola haga click</button>
+    <button (click)="this.change()" *ngIf="this.isButtonVisible">hola haga click</button>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

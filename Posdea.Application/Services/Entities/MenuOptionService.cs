@@ -6,7 +6,7 @@ using Posdea.Application.Common.Interfaces.Services;
 using Posdea.Application.Common.Interfaces.Services.Entities;
 using Posdea.Application.Models.Entities;
 using Posdea.Application.Models.UserSegment;
-using Posdea.Domain.Entities.UserSegment;
+using Posdea.Domain.Entities;
 using Posdea.Domain.Enums;
 using System;
 using System.Collections.Generic;

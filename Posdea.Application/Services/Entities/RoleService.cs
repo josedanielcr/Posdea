@@ -2,10 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using Posdea.Application.Common.Exceptions;
 using Posdea.Application.Common.Interfaces;
-using Posdea.Application.Common.Interfaces.Services;
 using Posdea.Application.Common.Interfaces.Services.Entities;
+using Posdea.Application.Common.Interfaces.Services.Util;
 using Posdea.Application.Models.UserSegment;
-using Posdea.Domain.Entities.UserSegment;
+using Posdea.Domain.Entities;
 using Posdea.Domain.Enums;
 using System;
 using System.Collections.Generic;

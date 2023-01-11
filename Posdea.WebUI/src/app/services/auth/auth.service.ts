@@ -36,7 +36,7 @@ export class AuthService {
         catchError( err => { throw parseApplicationError(err)})
       )
   }
-
+  
   public setAuthToken(token : string){
     localStorage.setItem('token', token);
   }

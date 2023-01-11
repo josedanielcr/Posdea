@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Posdea.Application.Mappings;
 using Posdea.Application.Models.Entities;
-using Posdea.Domain.Entities.UserSegment;
+using Posdea.Domain.Entities;
 using Posdea.Domain.Enums;
 using System;
 using System.Collections.Generic;

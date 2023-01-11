@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Posdea.Application.Common.Interfaces;
-using Posdea.Application.Common.Interfaces.Services;
 using Posdea.Application.Common.Interfaces.Services.Entities;
 using Posdea.Application.Common.Exceptions;
-using Posdea.Application.Helpers.Auth;
 using Posdea.Application.Models.Auth;
 using Posdea.Application.Models.UserSegment;
 using Posdea.Domain.Entities.UserSegment;
@@ -14,6 +12,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Posdea.Application.Common.Interfaces.Helpers;
+using System.Net.Http;
+using Posdea.Application.Common.Interfaces.Services.Auth;
+using Posdea.Application.Common.Interfaces.Services.Util;
 
 namespace Posdea.Application.Services.Auth
 {
@@ -21,12 +22,16 @@ namespace Posdea.Application.Services.Auth
     {
         private readonly IApplicationDbContext dbContext;
         private readonly IMapper mapper;
-        private readonly IPasswordHelper passwordHelper;
-        private readonly ITokenHelper tokenHelper;
+        private readonly IPasswordService passwordHelper;
+        private readonly ITokenService tokenHelper;
         private readonly IRoleService roleService;
 
-        public AuthService(IApplicationDbContext dbContext, IMapper mapper, IPasswordHelper passwordHelper, ITokenHelper tokenHelper,
-            IRoleService roleService)
+        public AuthService(IApplicationDbContext dbContext,
+            IMapper mapper,
+            IPasswordService passwordHelper,
+            ITokenService tokenHelper,
+            IRoleService roleService
+            )
         {
             this.dbContext = dbContext;
             this.mapper = mapper;
@@ -34,7 +39,6 @@ namespace Posdea.Application.Services.Auth
             this.tokenHelper = tokenHelper;
             this.roleService = roleService;
         }
-
         public async Task<object> Login(UserRegisterModel user)
         {
             try
