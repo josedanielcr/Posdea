@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Posdea.Application.Common.Interfaces.Services;
+using Posdea.Api.Controllers.Util;
+using Posdea.Application.Common.Interfaces.Services.Util;
 using Posdea.Application.Models.UserSegment;
 
 namespace Posdea.Api.Controllers.Entities

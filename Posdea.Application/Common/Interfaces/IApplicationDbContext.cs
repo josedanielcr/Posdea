@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Posdea.Domain.Entities;
 using Posdea.Domain.Entities.UserSegment;
 using System;
 using System.Collections.Generic;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Posdea.Application.Common.Interfaces;
+using Posdea.Domain.Entities;
 using Posdea.Domain.Entities.UserSegment;
 using System;
 using System.Collections.Generic;

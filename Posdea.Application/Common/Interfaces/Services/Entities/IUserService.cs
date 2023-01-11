@@ -10,5 +10,6 @@ namespace Posdea.Application.Common.Interfaces.Services.Entities
     public interface IUserService
     {
         Task<UserModel> GetById(int id);
+        Task<UserModel> GetCurrentUser();
     }
 }

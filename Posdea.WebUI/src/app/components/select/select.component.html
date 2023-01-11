@@ -1,0 +1,18 @@
+<mat-form-field [style.width]="this.size + '%'">
+  <mat-label>{{this.label}}</mat-label>
+  <mat-select multiple 
+              *ngIf="this.areMultiple"
+              [ngModel]="this.value"
+              (ngModelChange)="this.onChange($event)"
+              (blur)="this.onTouched()">
+    <mat-option *ngIf="this.default" [value]="this.default.value">{{this.default.text}}</mat-option>
+    <mat-option *ngFor="let data of selectData" [value]="data.value">{{data.text}}</mat-option>
+  </mat-select>
+  <mat-select *ngIf="!this.areMultiple" disableOptionCentering panelClass="dropdown-panel"
+              [ngModel]="this.value"
+              (ngModelChange)="this.onChange($event)"
+              (blur)="this.onTouched()">
+    <mat-option *ngIf="this.default" [value]="this.default.value">{{this.default.text}}</mat-option>
+    <mat-option *ngFor="let data of selectData" [value]="data.value">{{data.text}}</mat-option>
+  </mat-select>
+</mat-form-field>

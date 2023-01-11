@@ -1,0 +1,55 @@
+<div class="row h-100">
+  <div class="col-6 p-0">
+    <div class="d-flex flex-column justify-content-center align-items-center h-100">
+      <img src="../../../assets/images/logo.png" class="logo-img mb-4">
+      <div class="login-form-container d-flex flex-column justify-content-center align-items-center">
+        <div class="container text-center">
+          <div class="row">
+            <h3 class="fw-bold">Welcome back!</h3>
+          </div>
+          <div class="row">
+            <p>Please enter your log in credentials</p>
+          </div>
+        </div>
+        <div class="container text-center">
+          <form autocomplete="on" [formGroup]="this.loginForm">
+            <div class="row mb-2 mt-5">
+              <component-input label="Email" 
+                               icon="email" 
+                               type="email" 
+                               [size]="70"
+                               formControlName="email"
+                               errorMessage="you must provide a valid email"
+                               [inputFormControl]="this.loginForm!.get('email')!"></component-input>
+            </div>
+            <div class="row">
+              <component-input [isPassword]="true" 
+                               [size]="70" 
+                               formControlName="password"
+                               [inputFormControl]="this.loginForm!.get('password')!"
+                               errorMessage="You must provide a valid password"
+                               hint="the password must contain at least 10 character with one uppercase, lowercase, number and special character">
+              </component-input>
+            </div>
+          </form>
+        </div>
+        <div class="container mt-4 text-center">
+          <div class="row">
+            <component-button label="Login" 
+                              [size]="70" 
+                              type="primary" 
+                              [disabled]="false" 
+                              (click)="this.submitLogin()">
+            </component-button>
+          </div>
+          <div class="row mt-3">
+            <p>Don't have an account? <a [routerLink]="['/signUp']">sign up</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 bone-white-background right-bg">
+    <div class="h-100 banner-login-image"></div>
+  </div>
+</div>

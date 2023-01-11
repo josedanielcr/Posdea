@@ -1,0 +1,26 @@
+/* left side */
+.login-form-container {
+  width: 75%;
+  height: calc(100% - 40%);
+  border-radius: 2rem;
+  border: solid 0.01rem gainsboro;
+}
+
+.logo-img {
+  width: 3rem;
+  height: 3rem;
+}
+
+/* right background */
+.right-bg {
+  border-start-start-radius: 2rem;
+  border-end-start-radius: 2rem;
+  border: none;
+}
+
+.banner-login-image {
+  background-image: url(../../../assets/images/signUp-bg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center; 
+}

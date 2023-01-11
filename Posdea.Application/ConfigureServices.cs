@@ -15,7 +15,6 @@ using Posdea.Application.Common.Interfaces.Services;
 using Posdea.Application.Options;
 using Microsoft.Extensions.Configuration;
 using Posdea.Application.Services;
-using Posdea.Application.Helpers;
 
 namespace Posdea.Application
 {
@@ -27,8 +26,6 @@ namespace Posdea.Application
             services.Configure<TokenConfiguration>(configuration.GetSection("keys"));
             //autoMapper
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            //helpers
-            services.AddHelpersConfiguration();
             //services
             services.AddServicesConfiguration();
             return services;

@@ -2,10 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Posdea.Application.Common.Exceptions;
 using Posdea.Application.Common.Interfaces;
-using Posdea.Application.Common.Interfaces.Services;
 using Posdea.Application.Common.Interfaces.Services.Entities;
+using Posdea.Application.Common.Interfaces.Services.Util;
 using Posdea.Application.Models.UserSegment;
-using Posdea.Domain.Entities.UserSegment;
+using Posdea.Domain.Entities;
+using Posdea.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -86,6 +87,27 @@ namespace Posdea.Application.Services.Entities
                 throw;
             }
         }
+
+        public async Task<RoleModel> GetByRoleName(UserRoles role)
+        {
+            try
+            {
+                var roleDb = await dbContext.Roles
+                    .Where(r => r.Name == role)
+                    .FirstOrDefaultAsync();
+
+                if (roleDb == null)
+                {
+                    throw new NotFoundException("No role was found");
+                }
+                return mapper.Map<RoleModel>(roleDb);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public async Task<RoleModel> Insert(RoleModel entity)
         {
             try

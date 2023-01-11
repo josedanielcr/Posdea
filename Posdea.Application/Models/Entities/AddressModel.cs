@@ -15,12 +15,5 @@ namespace Posdea.Application.Models.UserSegment
         public int Id { get; set; }
         [Required]
         public int Country { get; set; }
-        [Required]
-        public int State { get; set; }
-        [Required]
-        public int City { get; set; }
-        [Required]
-        public int PostalCode { get; set; }
-
     }
 }

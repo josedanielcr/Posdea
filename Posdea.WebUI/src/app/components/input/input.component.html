@@ -1,0 +1,54 @@
+<!-- number, text, email -->
+<mat-form-field [style.width]="this.size+'%'" *ngIf="!this.isPassword">
+  <mat-label *ngIf="this.label">
+    {{this.label}}
+  </mat-label>
+  <input matInput 
+        [placeholder]="this.placeholder" 
+        [value]="this.value"
+        [type]="this.type"
+        [disabled]="this.disabled"
+        [ngModel]="this.value"
+        (ngModelChange)="this.onChange($event)"
+        (blur)="this.onTouched()">
+  <mat-hint align="start" 
+            *ngIf="this.inputFormControl.invalid 
+                    && this.inputFormControl.touched 
+                    && this.errorMessage"
+            class="error-message">
+    {{this.errorMessage}}
+  </mat-hint>
+  <mat-icon matSuffix>{{this.icon}}</mat-icon>
+  <mat-hint align="end" *ngIf="this.hint">
+    <mat-icon matSuffix 
+              class="help-icon"
+              [matTooltip]="this.hint"
+              [matTooltipPosition]="'left'">help</mat-icon>
+  </mat-hint>
+</mat-form-field>
+
+<!-- just for a password input -->
+<mat-form-field [style.width]="this.size+'%'" *ngIf="this.isPassword">
+  <mat-label>Password</mat-label>
+  <input matInput 
+        [value]="this.value"
+        [type]="this.visibilityType"
+        [ngModel]="this.value"
+        (ngModelChange)="this.onChange($event)"
+        (blur)="this.onTouched()">
+        <mat-hint align="start" 
+                *ngIf="this.inputFormControl.invalid 
+                  && this.inputFormControl.touched 
+                  && this.errorMessage"
+                class="error-message">
+          {{this.errorMessage}}
+        </mat-hint>
+        <mat-hint align="end" *ngIf="this.hint">
+          <mat-icon matSuffix 
+                    class="help-icon"
+                    [matTooltip]="this.hint"
+                    [matTooltipPosition]="'left'">help</mat-icon>
+        </mat-hint>
+    <mat-icon matSuffix *ngIf="!this.isHidden" (click)="this.changeVisibility()">visibility</mat-icon>
+    <mat-icon matSuffix *ngIf="this.isHidden" (click)="this.changeVisibility()">visibility_off</mat-icon>
+</mat-form-field>

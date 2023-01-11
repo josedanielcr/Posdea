@@ -1,4 +1,5 @@
 ﻿using Posdea.Application.Models.UserSegment;
+using Posdea.Domain.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace Posdea.Application.Common.Interfaces.Services.Entities
     public interface IRoleService
     {
         Task<RoleModel> GetById(int id);
+        Task<RoleModel> GetByRoleName(UserRoles role);
     }
 }
