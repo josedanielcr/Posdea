@@ -1,12 +1,32 @@
-<mat-sidenav-container class="example-container">
+<mat-sidenav-container class="sidebar-container">
 
   <mat-sidenav mode="side" [opened]="this.isOpen" [mode]="this.type" class="sidebar-width">
     <!-- options -->
-    <div class="container h-100">
-      <div class="row d-flex align-items-end h-100">
-        <div class="container d-flex" *ngIf="this.user">
+    <div class="container d-flex flex-column h-100">
+      <div class="row">
+        <div class="container mt-2">
+          <div class="mb-5">
+            <h1 class="main-title">Posdea</h1>
+          </div>
+          <div *ngFor="let option of this.menuOptions">
+            <div class="d-flex align-items-center option-container" [routerLink]="['/home' + option.route]">
+              <i class="{{option.icon}} fa-lg me-3 option-icon" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact:true}"></i>
+              <p class="mb-0 option-text" [routerLinkActive]="['is-active']" [routerLinkActiveOptions]="{exact:true}">{{option.name}}</p>
+            </div>
+            <hr [style.width]="90+'%'">
+          </div>
+        </div>
+      </div>
+
+      <!-- user section -->
+      <div class="row mt-auto">
+        <div class="container d-flex mb-3" *ngIf="this.user">
+          <div class="me-3">
+            <img src="{{this.user.avatar | defaultAvatar}}" class="avatar">
+          </div>
           <div>
-            {{user.name}}
+            <p class="mb-0 user-name-text red-secondary-color">{{user.name}}</p> 
+            <p class="mb-0">{{user.email}}</p>
           </div>
         </div>
       </div>

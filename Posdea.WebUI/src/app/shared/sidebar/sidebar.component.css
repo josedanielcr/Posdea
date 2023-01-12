@@ -1,4 +1,4 @@
-.example-container {
+.sidebar-container {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -7,6 +7,42 @@
   background: #eee;
 }
 
+.main-title {
+  font-family: 'Lobster', cursive;
+  font-weight: bold;
+  font-style: italic;
+}
+
 .sidebar-width {
-  width: 15rem;
+  width: 17rem;
+}
+
+.avatar {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+
+.user-name-text {
+  font-weight: bold;
+}
+
+.option-container {
+  cursor: pointer;
+}
+
+.option-container:hover {
+  color: #BD1E51 !important;
+}
+
+.option-icon {
+  color: grey;
+}
+
+.option-text {
+  font-weight: bold;
+}
+
+.is-active {
+  color: #BD1E51 !important;
 }

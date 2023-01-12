@@ -7,6 +7,7 @@ export const adaptUser = (userInternal : UserInternal) : User => {
   let user = new User();
   user.id = userInternal.id;
   user.name = userInternal.name;
+  user.avatar = userInternal.avatar;
   user.email = userInternal.email;
   user.phoneNumber = userInternal.phoneNumber;
   user.password = userInternal.password;

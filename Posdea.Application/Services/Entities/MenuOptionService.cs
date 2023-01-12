@@ -64,10 +64,16 @@ namespace Posdea.Application.Services.Entities
         {
             try
             {
+
                 var menuOptions = await dbContext.MenuOptions
                     .Where(m => m.RoleId == RoleId)
                     .Where(m => m.Status == EntityStatus.Active)
                     .ToListAsync();
+
+                menuOptions = menuOptions
+                    .OrderByDescending(menuOption => menuOption.Name == "Home")
+                    .ThenBy(menuOption => menuOption)
+                    .ToList();
 
                 if (menuOptions.Count == 0)
                 {

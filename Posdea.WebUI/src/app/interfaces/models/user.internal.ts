@@ -5,6 +5,7 @@ export interface UserInternal {
   id : number;
   name : string;
   email : string;
+  avatar : string;
   phoneNumber : string;
   password : string;
   status : string;
