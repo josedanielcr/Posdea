@@ -15,6 +15,7 @@ namespace Posdea.Domain.Entities.UserSegment
         public string Name { get; set; }
         [Required]
         public string Email { get; set; }
+        public string avatar { get; set; }
         [Required]
         public string PhoneNumber { get; set; }
         [Required]

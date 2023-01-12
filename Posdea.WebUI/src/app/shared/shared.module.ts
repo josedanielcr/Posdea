@@ -7,6 +7,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 //angular material
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { PipesModule } from '../pipes/pipes.module';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -16,7 +18,9 @@ import {MatSidenavModule} from '@angular/material/sidenav';
   imports: [
     CommonModule,
     MatSidenavModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PipesModule,
+    MatIconModule
   ],
   exports : [
     SidebarComponent

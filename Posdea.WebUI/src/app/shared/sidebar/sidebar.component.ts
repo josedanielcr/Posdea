@@ -45,15 +45,11 @@ export class SidebarComponent implements OnInit {
     this.userService.getActiveUser().subscribe({
       next: (user : User) => {
         this.user = user;
-        console.log(this.user);
-        
         this.getMenuOptions();
       },
       error : (error : ApplicationError) => {
         this.notificationService.showNotification('Internal error','error');
-        setTimeout(() => {
-          this.router.navigateByUrl('/login');
-        }, 1500);
+        this.sendToLogin();
       }
     })
   }
@@ -63,12 +59,11 @@ export class SidebarComponent implements OnInit {
       next : (menuOptions : MenuOption[]) => {
         this.menuOptions = menuOptions;
         console.log(this.menuOptions);
+        
       },
       error : (err : ApplicationError) => {
         this.notificationService.showNotification('Internal error','error');
-        setTimeout(() => {
-          this.router.navigateByUrl('/login');
-        }, 1500);
+        this.sendToLogin()
       }
     })
   }
@@ -83,6 +78,12 @@ export class SidebarComponent implements OnInit {
       this.isButtonVisible = false;
       this.type = 'side';
     } 
+  }
+
+  private sendToLogin(): void {
+    setTimeout(() => {
+      this.router.navigateByUrl('/login');
+    }, 1500);
   }
 
 }
